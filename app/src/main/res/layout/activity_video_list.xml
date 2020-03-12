@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3313030">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal_background" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:textColor="#fffafafa"
+        android:layout_width="300dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:textColor="#fffafafa"
+        android:layout_width="300dp"
+        android:layout_height="30dp" />
+
+
+    <VideoView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="393dp"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:contentDescription="todo" />
+
+
+</LinearLayout>

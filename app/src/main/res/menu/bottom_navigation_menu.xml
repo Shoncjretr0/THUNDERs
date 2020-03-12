@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      >
+
+    <item
+        android:id="@+id/ic_arrow"
+        android:icon="@drawable/ic_photo"
+        android:title="photos"
+        />
+
+        <item
+            android:id="@+id/ic_android"
+            android:icon="@drawable/ic_videoplay"
+            android:title="videos"
+            />
+        <item
+            android:id="@+id/ic_books"
+            android:icon="@drawable/ic_search"
+            android:title="search"
+            />
+        <item
+            android:id="@+id/ic_center_focus"
+            android:icon="@drawable/ic_add_to_photos"
+            android:title="post"
+            />
+
+    <item
+        android:id="@+id/ic_profile"
+        android:icon="@drawable/ic_person"
+        android:title="profile"
+        />
+
+
+
+
+</menu>

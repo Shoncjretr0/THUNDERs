@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ActionBar</string>
+    <string name="upload">upload</string>
+    <string name="location">location</string>
+    <string name="description">description</string>
+    <string name="gallery">gallery</string>
+    <string name="uh">uh</string>
+    <string name="camera">camera</string>
+    <string name="todoo">todoo</string>
+    <string name="todo">todo</string>
+    <string name="todooo">todooo</string>
+    <string name="hjhv">hjhv</string>
+    <string name="locationn">location</string>
+    <string name="descriptionn">description</string>
+</resources>
