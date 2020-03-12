@@ -58,7 +58,7 @@ public class home_list extends ArrayAdapter<post> {
         a=sellG.getPhotos();
         Picasso.get()
                 .load(a)
-                .into(profilepic);
+                .into(pic);
 
 
 

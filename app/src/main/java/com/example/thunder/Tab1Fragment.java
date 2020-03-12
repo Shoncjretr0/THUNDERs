@@ -56,7 +56,7 @@ public class Tab1Fragment extends Fragment {
     public int CurrentImageSelect = 0;
     String a,b,d;
     int uploads=0;
-    Uri imagePath;
+    Uri imageuri;
     public static ImageView imageView,gallery,imgview;
     private EditText des,tag;
     private TextView txtcam,txtgall;
@@ -103,8 +103,6 @@ public class Tab1Fragment extends Fragment {
     }
 
 
-
-
     @SuppressLint("SetTextI18n")
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -112,14 +110,17 @@ public class Tab1Fragment extends Fragment {
 
         if (requestCode == PICK_IMAGE) {
             if (resultCode == RESULT_OK) {
-                if (data.getClipData() != null) {
-                    int count = data.getClipData().getItemCount();
 
-
-
-
-                        Uri imageuri = data.getClipData().getItemAt(CurrentImageSelect).getUri();
+                         imageuri = data.getData();
                         ImageList.add(imageuri);
+
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageuri);
+                        imgview.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 
                     }
 
@@ -127,12 +128,12 @@ public class Tab1Fragment extends Fragment {
 
             }
 
-        }
+
 
 
     public void uploadFile() {
         //checking if file is available
-        if (imagePath != null) {
+        if (imageuri != null) {
             //displaying progress dialog while image is uploading
             final ProgressDialog progressDialog = new ProgressDialog(getActivity());
             progressDialog.setTitle("Uploading");
@@ -214,7 +215,7 @@ public class Tab1Fragment extends Fragment {
             post sellagrii = new post (idsell,name,photo,description,tags);
             databasesell.child(idsell).setValue(sellagrii);
             Toast.makeText(getActivity(), "post sucessful", Toast.LENGTH_SHORT).show();
-
+            getActivity().finish();
 
         } else {
             Toast.makeText(getActivity(), "You should enter the details", Toast.LENGTH_SHORT).show();
