@@ -28,8 +28,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -54,12 +57,13 @@ public class Tab1Fragment extends Fragment {
     public ArrayList<Uri> ImageList = new ArrayList<Uri>();
     private static int PICK_IMAGE = 123;
     public int CurrentImageSelect = 0;
-    String a,b,d;
+    String a,b,d,e;
     int uploads=0;
     Uri imageuri;
     public static ImageView imageView,gallery,imgview;
     private EditText des,tag;
     private TextView txtcam,txtgall;
+    String profilepiccc;
 
     @Nullable
     @Override
@@ -74,11 +78,13 @@ public class Tab1Fragment extends Fragment {
         imgview = (ImageView) view.get().findViewById(R.id.imagepic);
         des =(EditText) view.get().findViewById(R.id.editTextdes);
         tag=(EditText) view.get().findViewById(R.id.editTexttag);
+        e=login.name;
 
 
         btnpost = (Button) view.get().findViewById(R.id.button);
         txtcam = view.get().findViewById(R.id.textViewcam);
         txtgall= view.get().findViewById(R.id.textViewgal);
+
 
 
         btnpost.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +162,7 @@ public class Tab1Fragment extends Fragment {
                             d=url;
                             Toast.makeText(getActivity().getApplicationContext(), "Post Uploaded ", Toast.LENGTH_LONG).show();
                             //creating the upload object to store uploaded image details
+                            br();
                             post();
                             progressDialog.dismiss();
 
@@ -204,6 +211,7 @@ public class Tab1Fragment extends Fragment {
         String photo=d.trim();
         String description=a;
         String tags=b;
+        String profileurl=profilepiccc;
 
 
 
@@ -212,7 +220,7 @@ public class Tab1Fragment extends Fragment {
 
             String idsell = databasesell.push().getKey();
 
-            post sellagrii = new post (idsell,name,photo,description,tags);
+            post sellagrii = new post (idsell,name,photo,description,tags,profileurl);
             databasesell.child(idsell).setValue(sellagrii);
             Toast.makeText(getActivity(), "post sucessful", Toast.LENGTH_SHORT).show();
             getActivity().finish();
@@ -221,6 +229,32 @@ public class Tab1Fragment extends Fragment {
             Toast.makeText(getActivity(), "You should enter the details", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void br() {
+
+        final DatabaseReference collection = FirebaseDatabase.getInstance().getReference("userprofile");
+        Query query = collection.orderByChild("usrproemail").equalTo(e);
+        query.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    //namee = (String) child.child("usrproname").getValue();
+                    profilepiccc= (String) child.child("usrpicurl").getValue();
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
     }
 }
 

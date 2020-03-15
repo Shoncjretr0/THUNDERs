@@ -36,8 +36,7 @@ public class home_list extends ArrayAdapter<post> {
     public FirebaseDatabase database;
     public DatabaseReference mReference;
     public DatabaseReference childReference;
-    String namee;
-    String profilepicc;
+
 
     public home_list(Activity context, List<post> buylistadapters) {
         super(context, R.layout.home_list, buylistadapters);
@@ -60,18 +59,18 @@ public class home_list extends ArrayAdapter<post> {
 
         post sellG = buylistadapters.get(position);
 
-        c = sellG.getName();
-        br();
 
 
-        username.setText("Username:   " + namee);
-        name.setText("Name:   " + sellG.getDescription());
+
+        username.setText("Username:   " + sellG.getName());
+        name.setText("Description:   " + sellG.getDescription());
         a = sellG.getPhotos();
+        b=sellG.getProfileurl();
         Picasso.get()
                 .load(a)
                 .into(pic);
 
-        Picasso.get().load(profilepicc).transform(new CropCircleTransformation()).into(profilepic);
+        Picasso.get().load(b).transform(new CropCircleTransformation()).into(profilepic);
 
 
         return listViewItem;
@@ -79,31 +78,7 @@ public class home_list extends ArrayAdapter<post> {
 
     }
 
-    public void br() {
 
-        final DatabaseReference collection = FirebaseDatabase.getInstance().getReference("userprofile");
-        Query query = collection.orderByChild("usrproemail").equalTo(c);
-        query.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
-            @Override
-            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                     namee = (String) child.child("usrproname").getValue();
-                    profilepicc= (String) child.child("usrpicurl").getValue();
-
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-
-        });
-    }
 }
 
 

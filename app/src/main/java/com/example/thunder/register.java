@@ -123,7 +123,7 @@ public class register extends AppCompatActivity {
 
                                 Toast.makeText(register.this, "registration successful", Toast.LENGTH_SHORT).show();
                                 finish();
-                                startActivity(new Intent(register.this, userprofile.class));
+
 
                             } else {
                                 Toast.makeText(register.this, "registration failed", Toast.LENGTH_SHORT).show();
@@ -241,10 +241,11 @@ public class register extends AppCompatActivity {
 
                             String url = String.valueOf(uri);
                             d=url;
-                            Toast.makeText(getApplicationContext(), "Post Uploaded ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Profile pic uploaded", Toast.LENGTH_LONG).show();
                             //creating the upload object to store uploaded image details
                             rrcd();
                             progressDialog.dismiss();
+                            startActivity(new Intent(register.this, userprofile.class));
 
                         }
                     });
