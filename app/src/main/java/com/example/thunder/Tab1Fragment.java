@@ -199,7 +199,7 @@ public class Tab1Fragment extends Fragment {
 
 
 
-        String name="unknown";
+        String name= login.name;
 
         String photo=d.trim();
         String description=a;
