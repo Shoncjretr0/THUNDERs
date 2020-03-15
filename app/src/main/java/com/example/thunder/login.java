@@ -29,6 +29,7 @@ public class login extends AppCompatActivity {
     private int counter = 5;
     private ProgressDialog progressDialog;
     static String usermailidpass;
+    public static String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +105,7 @@ public class login extends AppCompatActivity {
         }
         else {
 
-            progressDialog.setMessage("welcome to AGRIAPP");
+            progressDialog.setMessage("welcome to THUNDER");
 
             progressDialog.show();
 
@@ -183,7 +184,7 @@ public class login extends AppCompatActivity {
     }
 
     public void rrmain(){
-        usermailidpass=Name.getText().toString();
+        name=Name.getText().toString();
 
 
     }
