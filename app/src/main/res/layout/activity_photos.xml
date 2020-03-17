@@ -17,6 +17,12 @@
             android:layout_height="50dp"
             android:id="@+id/topBar">
 
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/topBr"
+                android:layout_alignParentBottom="true"/>
+
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

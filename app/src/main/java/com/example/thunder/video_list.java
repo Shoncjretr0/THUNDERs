@@ -49,7 +49,7 @@ public class video_list extends ArrayAdapter<post> {
         TextView username= listViewItem.findViewById(R.id.text1);
         TextView name= listViewItem.findViewById(R.id.text2);
         ImageView profilepic= listViewItem.findViewById(R.id.imageView);
-        VideoView pic= listViewItem.findViewById(R.id.imageView1);
+        final VideoView pic= listViewItem.findViewById(R.id.imageView1);
 
 
         post sellG= buylistadapters.get(position);
