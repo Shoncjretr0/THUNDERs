@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class photos extends AppCompatActivity {
+public class photos extends AppCompatActivity  {
 
     ListView listviewbuys;
     DatabaseReference databasesell;
@@ -39,6 +39,8 @@ public class photos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos);
+        Toolbar toolbar = findViewById(R.id.topBr);
+        setSupportActionBar(toolbar);
 
         databasesell = FirebaseDatabase.getInstance().getReference("post");
 
@@ -88,8 +90,7 @@ public class photos extends AppCompatActivity {
                         break;
                 }
 
-                Toolbar toolbar = findViewById(R.id.topBr);
-                setSupportActionBar(toolbar);
+
 
 
                 return false;

@@ -12,4 +12,12 @@
     <string name="hjhv">hjhv</string>
     <string name="locationn">location</string>
     <string name="descriptionn">description</string>
+    <array name="filters">
+        <item>All</item>
+        <item>People</item>
+        <item>#_Hash tag</item>
+        <item>places</item>
+
+
+    </array>
 </resources>

@@ -44,12 +44,12 @@ public class video_list extends ArrayAdapter<post> {
     @NonNull
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater =context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.home_list,null,true);
+        View listViewItem = inflater.inflate(R.layout.activity_video_list,null,true);
 
         TextView username= listViewItem.findViewById(R.id.text1);
         TextView name= listViewItem.findViewById(R.id.text2);
         ImageView profilepic= listViewItem.findViewById(R.id.imageView);
-        final VideoView pic= listViewItem.findViewById(R.id.imageView1);
+        VideoView pic= listViewItem.findViewById(R.id.imageView1);
 
 
         post sellG= buylistadapters.get(position);
