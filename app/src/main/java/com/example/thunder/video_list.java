@@ -4,12 +4,14 @@ package com.example.thunder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.DataSetObserver;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -49,7 +51,13 @@ public class video_list extends ArrayAdapter<post> {
         TextView username= listViewItem.findViewById(R.id.text1);
         TextView name= listViewItem.findViewById(R.id.text2);
         ImageView profilepic= listViewItem.findViewById(R.id.imageView);
-        VideoView pic= listViewItem.findViewById(R.id.imageView1);
+        final VideoView pic= listViewItem.findViewById(R.id.imageView1);
+
+       final MediaController mediacontroller = new MediaController(context);
+        mediacontroller.setAnchorView(pic);
+
+        pic.setMediaController(mediacontroller);
+        pic.requestFocus();
 
 
         post sellG= buylistadapters.get(position);
@@ -58,8 +66,20 @@ public class video_list extends ArrayAdapter<post> {
         name.setText( "Name:   "+ sellG.getDescription());
         a=sellG.getPhotos();
         pic.setVideoPath(a);
-        pic.start();
 
+        pic.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+                    @Override
+                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+                        pic.setMediaController(mediacontroller);
+                        mediacontroller.setAnchorView(pic);
+
+                    }
+                });
+            }
+        });
 
 
 
