@@ -64,6 +64,7 @@ public class Tab2Fragment extends Fragment {
     private EditText des,tag;
     private TextView txtcam,txtgall;
     String profilepiccc;
+    String naame= login.name;
 
     @Nullable
     @Override
@@ -205,7 +206,7 @@ public class Tab2Fragment extends Fragment {
 
 
 
-        String name="unknown";
+        String name=naame;
 
         String photo=d.trim();
         String description=a;

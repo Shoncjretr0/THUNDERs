@@ -74,21 +74,6 @@ public class profile extends TabActivity {
                 .setContent(intentApple);
 
 
-        databasesell = FirebaseDatabase.getInstance().getReference("userprofile");
-
-        listviewbuys = findViewById(R.id.listviewbuy);
-
-        listbuyy = new ArrayList<>();
-
-
-        Query query = FirebaseDatabase.getInstance().getReference("userprofile")
-                .orderByChild("usrproemail")
-                .equalTo(name);
-
-        //query.addListenerForSingleValueEvent(valueEventListener);
-
-
-
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
