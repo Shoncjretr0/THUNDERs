@@ -21,6 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/topBr"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true" />
+
+
+
 
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -32,17 +40,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
-
-
-
-            <ListView
-                android:id="@+id/listviewbuy"
+            <TabHost
+                android:id="@android:id/tabhost"
                 android:layout_width="match_parent"
-                android:layout_height="422dp"
+                android:layout_height="322dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="0dp"
-                android:layout_marginBottom="2dp" />
+                android:layout_marginBottom="2dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="2dp">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="29dp" />
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:padding="5dp" />
+            </LinearLayout>
+
+            </TabHost>
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -70,7 +96,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="17dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginTop="29dp"
                 android:layout_toEndOf="@+id/button2"
                 app:srcCompat="@drawable/ic_edit" />
@@ -103,6 +129,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="142dp"
+                android:layout_marginBottom="102dp"
                 android:text="TextView" />
 
         </RelativeLayout>
