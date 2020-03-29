@@ -66,6 +66,7 @@ public class video_list extends ArrayAdapter<post> {
         name.setText( "Name:   "+ sellG.getDescription());
         a=sellG.getPhotos();
         pic.setVideoPath(a);
+        pic.seekTo(1);
 
         pic.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override

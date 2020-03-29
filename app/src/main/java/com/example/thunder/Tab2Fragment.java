@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -20,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,7 +63,8 @@ public class Tab2Fragment extends Fragment {
     String a,b,d,e;
     int uploads=0;
     Uri imageuri;
-    public static ImageView imageView,gallery,imgview;
+    public static ImageView imageView,gallery;
+    public  VideoView imgview;
     private EditText des,tag;
     private TextView txtcam,txtgall;
     String profilepiccc;
@@ -76,7 +80,7 @@ public class Tab2Fragment extends Fragment {
         storageReference = firebaseStorage.getInstance().getReference();
         imageView = (ImageView) getActivity().findViewById(R.id.imgcam);
         gallery = (ImageView) getActivity().findViewById(R.id.imggaall);
-        imgview = (ImageView) view.get().findViewById(R.id.imagepic);
+        imgview = (VideoView) view.get().findViewById(R.id.imagepic);
         des =(EditText) view.get().findViewById(R.id.editTextdes);
         tag=(EditText) view.get().findViewById(R.id.editTexttag);
         e=login.name;
@@ -120,12 +124,9 @@ public class Tab2Fragment extends Fragment {
                 imageuri = data.getData();
                 ImageList.add(imageuri);
 
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageuri);
-                    imgview.setImageBitmap(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Bitmap bitmap = ThumbnailUtils.createAudioThumbnail(String.valueOf(imageuri), MediaStore.Images.Thumbnails.MICRO_KIND);
+                BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+                imgview.setBackgroundDrawable(bitmapDrawable);
 
 
             }

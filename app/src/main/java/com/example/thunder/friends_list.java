@@ -28,18 +28,18 @@ import java.util.List;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
-public class profilephotolist extends ArrayAdapter<post> {
+public class friends_list extends ArrayAdapter<userprofileref> {
 
     private Activity context;
-    private List<post> buylistadapters;
+    private List<userprofileref> buylistadapters;
     String a, b, c;
     public FirebaseDatabase database;
     public DatabaseReference mReference;
     public DatabaseReference childReference;
 
 
-    public profilephotolist(Activity context, List<post> buylistadapters) {
-        super(context, R.layout.activity_profilephotolist, buylistadapters);
+    public friends_list(Activity context, List<userprofileref> buylistadapters) {
+        super(context, R.layout.home_list, buylistadapters);
         this.context = context;
         this.buylistadapters = buylistadapters;
     }
@@ -49,21 +49,22 @@ public class profilephotolist extends ArrayAdapter<post> {
     @NonNull
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.activity_profilephotolist, null, true);
+        View listViewItem = inflater.inflate(R.layout.home_list, null, true);
+
+        TextView username = listViewItem.findViewById(R.id.text1);
+        ImageView profilepic = listViewItem.findViewById(R.id.imageView);
 
 
-        ImageView pic = listViewItem.findViewById(R.id.imageView1);
+        userprofileref sellG = buylistadapters.get(position);
 
 
-        post sellG = buylistadapters.get(position);
 
 
-        a = sellG.getPhotos();
-        Picasso.get()
-                .load(a)
-                .into(pic);
+        username.setText("Username:   " + sellG.getUsrproname());
+        b=sellG.getUsrpicurl();
 
 
+        Picasso.get().load(b).transform(new CropCircleTransformation()).into(profilepic);
 
 
         return listViewItem;

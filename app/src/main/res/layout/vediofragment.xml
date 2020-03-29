@@ -89,7 +89,7 @@
         android:layout_toEndOf="@+id/imgcam"
         app:srcCompat="@drawable/gallery" />
 
-    <ImageView
+    <VideoView
         android:id="@+id/imagepic"
         android:layout_width="match_parent"
         android:layout_height="170dp"
