@@ -20,11 +20,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class video_list extends ArrayAdapter<post> {
 
@@ -34,6 +39,7 @@ public class video_list extends ArrayAdapter<post> {
     public FirebaseDatabase database ;
     public DatabaseReference mReference ;
     public DatabaseReference childReference ;
+    String profilepiccc;
 
     public video_list (Activity context,List<post>  buylistadapters){
         super(context,R.layout.activity_video_list, buylistadapters);
@@ -50,7 +56,7 @@ public class video_list extends ArrayAdapter<post> {
 
         TextView username= listViewItem.findViewById(R.id.text1);
         TextView name= listViewItem.findViewById(R.id.text2);
-        ImageView profilepic= listViewItem.findViewById(R.id.imageView);
+        final ImageView profilepic= listViewItem.findViewById(R.id.imageView);
         final VideoView pic= listViewItem.findViewById(R.id.imageView1);
 
        final MediaController mediacontroller = new MediaController(context);
@@ -61,6 +67,31 @@ public class video_list extends ArrayAdapter<post> {
 
 
         post sellG= buylistadapters.get(position);
+        b=sellG.getName();
+        final DatabaseReference collection = FirebaseDatabase.getInstance().getReference("userprofile");
+        Query query = collection.orderByChild("usrproemail").equalTo(b);
+        query.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    profilepiccc= (String) child.child("usrpicurl").getValue();
+                    Picasso.get().load(profilepiccc).transform(new CropCircleTransformation()).into(profilepic);
+
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
 
         username.setText( "Username:   " + sellG.getName());
         name.setText( "Name:   "+ sellG.getDescription());

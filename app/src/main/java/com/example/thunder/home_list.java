@@ -36,6 +36,7 @@ public class home_list extends ArrayAdapter<post> {
     public FirebaseDatabase database;
     public DatabaseReference mReference;
     public DatabaseReference childReference;
+    String profilepiccc;
 
 
     public home_list(Activity context, List<post> buylistadapters) {
@@ -53,11 +54,36 @@ public class home_list extends ArrayAdapter<post> {
 
         TextView username = listViewItem.findViewById(R.id.text1);
         TextView name = listViewItem.findViewById(R.id.text2);
-        ImageView profilepic = listViewItem.findViewById(R.id.imageView);
+        final ImageView profilepic = listViewItem.findViewById(R.id.imageView);
         ImageView pic = listViewItem.findViewById(R.id.imageView1);
 
 
         post sellG = buylistadapters.get(position);
+        c=sellG.getName();
+        final DatabaseReference collection = FirebaseDatabase.getInstance().getReference("userprofile");
+        Query query = collection.orderByChild("usrproemail").equalTo(c);
+        query.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                     profilepiccc= (String) child.child("usrpicurl").getValue();
+                    Picasso.get().load(profilepiccc).transform(new CropCircleTransformation()).into(profilepic);
+
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
 
 
 
@@ -65,12 +91,11 @@ public class home_list extends ArrayAdapter<post> {
         username.setText("Username:   " + sellG.getName());
         name.setText("Description:   " + sellG.getDescription());
         a = sellG.getPhotos();
-        b=sellG.getProfileurl();
         Picasso.get()
                 .load(a)
                 .into(pic);
 
-        Picasso.get().load(b).transform(new CropCircleTransformation()).into(profilepic);
+
 
 
         return listViewItem;

@@ -64,7 +64,7 @@ public class Tab2Fragment extends Fragment {
     int uploads=0;
     Uri imageuri;
     public static ImageView imageView,gallery;
-    public  VideoView imgview;
+    public  ImageView imgview;
     private EditText des,tag;
     private TextView txtcam,txtgall;
     String profilepiccc;
@@ -80,7 +80,7 @@ public class Tab2Fragment extends Fragment {
         storageReference = firebaseStorage.getInstance().getReference();
         imageView = (ImageView) getActivity().findViewById(R.id.imgcam);
         gallery = (ImageView) getActivity().findViewById(R.id.imggaall);
-        imgview = (VideoView) view.get().findViewById(R.id.imagepic);
+        imgview =  view.get().findViewById(R.id.imagepic);
         des =(EditText) view.get().findViewById(R.id.editTextdes);
         tag=(EditText) view.get().findViewById(R.id.editTexttag);
         e=login.name;
@@ -124,7 +124,7 @@ public class Tab2Fragment extends Fragment {
                 imageuri = data.getData();
                 ImageList.add(imageuri);
 
-                Bitmap bitmap = ThumbnailUtils.createAudioThumbnail(String.valueOf(imageuri), MediaStore.Images.Thumbnails.MICRO_KIND);
+                Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(String.valueOf(imageuri), MediaStore.Images.Thumbnails.MINI_KIND);
                 BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
                 imgview.setBackgroundDrawable(bitmapDrawable);
 
