@@ -20,12 +20,14 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/topBr"
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/a"/>
+
 
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -38,10 +40,23 @@
             android:layout_height="match_parent"
             >
 
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Here" />
+
+
             <ListView
                 android:id="@+id/listviewbuy"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="632dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="-1dp" />
 
         </RelativeLayout>
 
@@ -49,30 +64,10 @@
 
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/bottomBar"
-            android:layout_alignParentBottom="true">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/bottomNavView_Bar"
-                android:background="@drawable/white_grey_border_top"
-                app:menu="@menu/bottom_navigation_menu">
-
-
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
-        </RelativeLayout>
 
 
 
     </RelativeLayout>
-
-
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

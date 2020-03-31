@@ -38,11 +38,11 @@ public class profile extends TabActivity {
     DatabaseReference databasesell;
     List<post> listbuyy;
     private FirebaseAuth firebaseAuth;
-    public  String  profilepiccc,namee,emailid;
+    public  String  profilepiccc,namee,desccription;
     String name= login.name;
     ImageView pic;
     TextView usrname;
-    TextView usrid;
+    TextView usrid,des;
     Context context;
 
     @Override
@@ -53,6 +53,7 @@ public class profile extends TabActivity {
          pic=findViewById(R.id.imageView3);
         usrname=findViewById(R.id.textView);
          usrid=findViewById(R.id.textView3);
+         des=findViewById(R.id.textView4);
         Toolbar toolbar = findViewById(R.id.topBr);
         context = this;
         br();
@@ -134,10 +135,13 @@ public class profile extends TabActivity {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     namee = (String) child.child("usrproname").getValue();
                     profilepiccc= (String) child.child("usrpicurl").getValue();
+                    desccription= (String) child.child("description").getValue();
 
                     usrname.setText(namee);
                     usrid.setText(name);
                     Picasso.get().load(profilepiccc).transform(new CropCircleTransformation()).into(pic);
+                    des.setText(desccription);
+
 
                 }
 

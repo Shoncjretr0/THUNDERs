@@ -39,7 +39,7 @@ public class friends_list extends ArrayAdapter<userprofileref> {
 
 
     public friends_list(Activity context, List<userprofileref> buylistadapters) {
-        super(context, R.layout.home_list, buylistadapters);
+        super(context, R.layout.activity_friends_list, buylistadapters);
         this.context = context;
         this.buylistadapters = buylistadapters;
     }
@@ -49,7 +49,7 @@ public class friends_list extends ArrayAdapter<userprofileref> {
     @NonNull
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.home_list, null, true);
+        View listViewItem = inflater.inflate(R.layout.activity_friends_list, null, true);
 
         TextView username = listViewItem.findViewById(R.id.text1);
         ImageView profilepic = listViewItem.findViewById(R.id.imageView);

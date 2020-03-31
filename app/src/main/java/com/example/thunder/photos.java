@@ -153,6 +153,9 @@ public class photos extends AppCompatActivity  {
                 return true;
             case R.id.item2:
                 return true;
+            case R.id.item3:
+                startActivity(new Intent(photos.this, chatmenu.class));
+                return true;
             case R.id.item5:
                 Logout();
                 return true;

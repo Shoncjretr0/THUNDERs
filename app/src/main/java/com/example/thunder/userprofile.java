@@ -21,7 +21,7 @@ public class userprofile extends AppCompatActivity {
     EditText nameusr;
     EditText addressusr;
     EditText pincdusr;
-    EditText emailusr;
+    EditText emailusr,des;
     Button submitt;
     Spinner usertyp;
     DatabaseReference databaseuser;
@@ -38,6 +38,8 @@ public class userprofile extends AppCompatActivity {
         pincdusr=findViewById(R.id.pincdusr);
         emailusr=findViewById(R.id.usremail);
         submitt=findViewById(R.id.usrbttn);
+        des=findViewById(R.id.editTextdes);
+
 
         submitt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,14 +59,15 @@ public class userprofile extends AppCompatActivity {
         String addr=addressusr.getText().toString().trim();
         String city=pincdusr.getText().toString().trim();
         String email=emailusr.getText().toString().trim();
-        String profilepicurl= Objects.requireNonNull(getIntent().getExtras()).getString("value10765");
+        String profilepicurl= register.picurll;
+        String description=des.getText().toString().trim();
 
 
         if(!TextUtils.isEmpty(name)){
 
             String id=databaseuser.push().getKey();
 
-            userprofileref usrprofre =new userprofileref(id, name, addr, email, city ,phno,profilepicurl);
+            userprofileref usrprofre =new userprofileref(id, name, addr, email, city ,phno,profilepicurl,description);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"details collected sucessfully",Toast.LENGTH_LONG).show();
 

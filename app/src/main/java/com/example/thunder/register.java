@@ -54,6 +54,7 @@ public class register extends AppCompatActivity {
     private StorageReference storageReference;
     private ProgressDialog progressDialog;
     String d;
+    public static String picurll;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -119,10 +120,7 @@ public class register extends AppCompatActivity {
                                 //sendEmailVerification();
                                 //sendUserData();
                                 uploadFile();
-                                firebaseAuth.signOut();
 
-                                Toast.makeText(register.this, "registration successful", Toast.LENGTH_SHORT).show();
-                                finish();
 
 
                             } else {
@@ -242,10 +240,16 @@ public class register extends AppCompatActivity {
                             String url = String.valueOf(uri);
                             d=url;
                             Toast.makeText(getApplicationContext(), "Profile pic uploaded", Toast.LENGTH_LONG).show();
+
+
+                            Toast.makeText(register.this, "registration successful", Toast.LENGTH_SHORT).show();
+                            firebaseAuth.signOut();
+                            progressDialog.dismiss();
                             //creating the upload object to store uploaded image details
                             rrcd();
-                            progressDialog.dismiss();
+
                             startActivity(new Intent(register.this, userprofile.class));
+                            finish();
 
                         }
                     });
@@ -274,11 +278,9 @@ public class register extends AppCompatActivity {
         }
     }
     public void rrcd(){
-        String gtf=d;
-        Intent i = new Intent(register.this,userprofile.class);
-        i.putExtra("value10765",gtf);
-        startActivity(i);
-        finish();
+
+        picurll=d;
+
     }
 }
 

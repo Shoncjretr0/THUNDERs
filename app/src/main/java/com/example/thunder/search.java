@@ -60,6 +60,8 @@ public class search extends AppCompatActivity {
                     hhashtag=hashtag.getSelectedItem().toString();
                     if(hhashtag=="friends"){
 
+                        Toast.makeText(search.this, "a",Toast.LENGTH_LONG).show();
+
                         databasesell = FirebaseDatabase.getInstance().getReference("userprofile");
 
                         listviewbuys = findViewById(R.id.listviewbuy);
