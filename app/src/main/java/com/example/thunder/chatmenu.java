@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class chatmenu extends AppCompatActivity {
 
@@ -34,6 +37,7 @@ public class chatmenu extends AppCompatActivity {
     DatabaseReference databasesell;
     List<userprofileref> listbuyy;
     private FirebaseAuth firebaseAuth;
+    public static String namee,picurl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +74,17 @@ public class chatmenu extends AppCompatActivity {
             friends_list adapter = new friends_list(chatmenu.this, listbuyy);
             listviewbuys.setAdapter( adapter);
 
-            listviewbuys.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            listviewbuys.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i,long l) {
 
 
-                    userprofileref listbuy = listbuyy.get(i);
 
-                    return false;
+                    userprofileref listbuy=listbuyy.get(i);
+
+                    picurl= listbuy.getUsrpicurl();
+                    namee=listbuy.getUsrproname();
+                    startActivity(new Intent(chatmenu.this, messaging.class));
                 }
             });
 
