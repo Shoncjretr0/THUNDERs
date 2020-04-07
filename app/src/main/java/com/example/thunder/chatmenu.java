@@ -37,7 +37,7 @@ public class chatmenu extends AppCompatActivity {
     DatabaseReference databasesell;
     List<userprofileref> listbuyy;
     private FirebaseAuth firebaseAuth;
-    public static String namee,picurl;
+    public static String namee,picurl,usernamme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,8 @@ public class chatmenu extends AppCompatActivity {
 
                     picurl= listbuy.getUsrpicurl();
                     namee=listbuy.getUsrproname();
+                    usernamme=listbuy.getUsrproemail();
+
                     startActivity(new Intent(chatmenu.this, messaging.class));
                 }
             });
