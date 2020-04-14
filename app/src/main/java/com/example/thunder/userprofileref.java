@@ -9,12 +9,13 @@ public class userprofileref {
     String usrprophno;
     String usrpicurl;
     String description;
+    String status;
 
     public userprofileref(){
 
     }
 
-    public userprofileref(String usrproid,String usrproname, String usrproaddr, String usrproemail, String usrpropincd, String usrprophno, String usrpicurl, String description) {
+    public userprofileref(String usrproid,String usrproname, String usrproaddr, String usrproemail, String usrpropincd, String usrprophno, String usrpicurl, String description ,String status) {
         this.usrproid= usrproid;
         this.usrproname = usrproname;
         this.usrproaddr = usrproaddr;
@@ -23,6 +24,7 @@ public class userprofileref {
         this.usrprophno = usrprophno;
         this.usrpicurl=usrpicurl;
         this.description=description;
+        this.status=status;
     }
     public String getUsrproid() {
         return usrproid;
@@ -54,5 +56,9 @@ public class userprofileref {
     }
 
     public String getDescription() {return description;}
+
+    public String getStatus (){
+        return status;
+    }
 }
 

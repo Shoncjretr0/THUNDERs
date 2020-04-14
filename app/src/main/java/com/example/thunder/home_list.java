@@ -3,6 +3,7 @@ package com.example.thunder;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,12 +39,15 @@ public class home_list extends ArrayAdapter<post> {
     public DatabaseReference mReference;
     public DatabaseReference childReference;
     String profilepiccc;
+    ImageView heart,comment;
 
 
     public home_list(Activity context, List<post> buylistadapters) {
         super(context, R.layout.home_list, buylistadapters);
         this.context = context;
         this.buylistadapters = buylistadapters;
+
+
     }
 
 
@@ -94,6 +99,10 @@ public class home_list extends ArrayAdapter<post> {
         Picasso.get()
                 .load(a)
                 .into(pic);
+
+
+
+
 
 
 

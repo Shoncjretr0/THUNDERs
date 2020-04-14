@@ -55,6 +55,7 @@ public class register extends AppCompatActivity {
     private ProgressDialog progressDialog;
     String d;
     public static String picurll;
+    public static String maill;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -85,6 +86,8 @@ public class register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         setupUIViews();
+
+        maill=mail.toString();
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseStorage= FirebaseStorage.getInstance();

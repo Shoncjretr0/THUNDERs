@@ -1,86 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="225dp"
-    android:background="@drawable/klj"
+    android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/image_view_container1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="410dp"
+        android:layout_height="210dp"
+        android:background="@drawable/attachmment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-        <LinearLayout
-            android:id="@+id/image_view_01"
-            android:layout_width="186dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_marginStart="35dp"
-                android:layout_width="105dp"
-                android:layout_height="75dp"
-                android:background="@drawable/gallery" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="                Documents"
-                android:textColor="#050505"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="92dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="40dp"
-                android:background="@drawable/ic_camera_black_24dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="                  Camera"
-                android:textColor="#050505"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/image_view_03"
-            android:layout_width="161dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="77dp"
-                android:layout_marginStart="35dp"
-                android:background="@drawable/location" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="                 Location"
-                android:textColor="#050505"
-                android:textStyle="bold"/>
-
-            <ImageView
-                android:layout_width="96dp"
-                android:layout_height="74dp"
-                android:layout_marginStart="35dp"
-                android:background="@drawable/phone" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="                  Contacts"
-                android:textColor="#050505"
-                android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="73dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,16 +58,17 @@ public class userprofile extends AppCompatActivity {
         String phno=phoneno.getText().toString().trim();
         String addr=addressusr.getText().toString().trim();
         String city=pincdusr.getText().toString().trim();
-        String email=emailusr.getText().toString().trim();
+        String email=register.maill;
         String profilepicurl= register.picurll;
         String description=des.getText().toString().trim();
+        String status="online";
 
 
         if(!TextUtils.isEmpty(name)){
 
             String id=databaseuser.push().getKey();
 
-            userprofileref usrprofre =new userprofileref(id, name, addr, email, city ,phno,profilepicurl,description);
+            userprofileref usrprofre =new userprofileref(id, name, addr, email, city ,phno,profilepicurl,description,status);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"details collected sucessfully",Toast.LENGTH_LONG).show();
 
