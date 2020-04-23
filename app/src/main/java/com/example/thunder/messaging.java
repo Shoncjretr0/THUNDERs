@@ -46,17 +46,58 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
     ListView listviewbuys;
     DatabaseReference databasesell;
     List<messagepass> listbuyy;
-    String to=namme;
+    String to=userid;
     String from=login.name;
+    DatabaseReference t,gga;
+    String iddentifier,ee,ff;
+    int aa,bb;
+    char cc,dd;
+    Query query;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
-        databaseuser= FirebaseDatabase.getInstance().getReference("message").child(from).child(to);
-        databaseuser2= FirebaseDatabase.getInstance().getReference("message").child(to).child(from);
 
+
+        aa=from.length();
+        bb=to.length();
+
+
+        if(to==from) {
+
+            iddentifier=to;
+        }
+        else if(aa > bb) {
+
+            iddentifier = from+to;
+        }
+        else if(bb > aa){
+
+            iddentifier= to+from;
+        }
+        else if(aa==bb){
+
+            cc=from.charAt(3);
+            dd=to.charAt(3);
+            if(cc>dd){
+                iddentifier=from+to;
+
+            }
+            else{
+                iddentifier=to+from;
+            }
+
+        }
+
+        else{
+            iddentifier="omb";
+        }
+
+        databaseuser= FirebaseDatabase.getInstance().getReference("message");
+
+        databaseuser2= FirebaseDatabase.getInstance().getReference("message");
 
         databasesell = FirebaseDatabase.getInstance().getReference("message");
 
@@ -64,7 +105,9 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
 
         listbuyy = new ArrayList<>();
 
-        Query query = FirebaseDatabase.getInstance().getReference("message").child(from).child(to);
+       query = FirebaseDatabase.getInstance().getReference("message")
+                .orderByChild("iddentifier")
+                .equalTo(iddentifier);
 
 
         query.addListenerForSingleValueEvent(valueEventListener);
@@ -123,8 +166,9 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
             public void onClick(View v) {
 
                 message();
-                message1();
                 messaage.getText().clear();
+                query.addListenerForSingleValueEvent(valueEventListener);
+
             }
         });
 
@@ -181,7 +225,7 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
 
             String id=databaseuser.push().getKey();
 
-            userprofileref usrprofre =new userprofileref(id, to, from, message, time , date, picurl, videourl, docurl);
+            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"message sent",Toast.LENGTH_LONG).show();
 
@@ -193,31 +237,7 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
         }
     }
 
-    private void message1(){
 
-        String message=messaage.getText().toString().trim();
-        String time=f;
-        String date=datee;
-        String picurl="unknown";
-        String videourl="unknown";
-        String docurl="unknown";
-
-
-        if(!TextUtils.isEmpty(message)){
-
-            String id=databaseuser.push().getKey();
-
-            userprofileref usrprofre =new userprofileref(id, to, from, message, time , date, picurl, videourl, docurl);
-            databaseuser.child(id).setValue(usrprofre);
-            Toast.makeText(this,"message sent",Toast.LENGTH_LONG).show();
-
-
-
-
-        }else{
-            Toast.makeText(this,"nothing to send",Toast.LENGTH_LONG).show();
-        }
-    }
 
 
     @Override

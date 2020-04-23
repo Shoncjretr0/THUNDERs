@@ -10,12 +10,13 @@ public class messagepass {
     String picurl;
     String videourl;
     String docurl;
+    String iddentifier;
 
     public messagepass(){
 
     }
 
-    public messagepass(String id,String to, String from, String message, String time, String date, String picurl, String videourl, String docurl) {
+    public messagepass(String id,String to, String from, String message, String time, String date, String picurl, String videourl, String docurl,  String iddentifier) {
         this.id =id;
         this.to = to;
         this.from = from;
@@ -25,6 +26,7 @@ public class messagepass {
         this.picurl = picurl;
         this.videourl = videourl;
         this.docurl = docurl;
+        this.iddentifier= iddentifier;
     }
 
     public String getId() {
@@ -61,5 +63,9 @@ public class messagepass {
 
     public String getDocurl() {
         return docurl;
+    }
+
+    public String getIddentifier() {
+        return iddentifier;
     }
 }

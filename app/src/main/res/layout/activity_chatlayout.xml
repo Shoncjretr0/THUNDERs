@@ -14,7 +14,7 @@
             android:id="@+id/messengerImageView"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@drawable/coin"/>
+            android:src="@color/transparent"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:textColor="#FFFFFF"
                 android:textAppearance="?android:attr/textAppearanceLarge"/>
 
             <ImageView
@@ -38,11 +39,13 @@
                 android:background="@color/colorPrimary"
                 android:scaleType="fitCenter"/>
 
+
             <TextView
                 android:id="@+id/messengerTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:textColor="#FFFFFF"
                 android:textAppearance="?android:attr/textAppearanceSmall"/>
         </LinearLayout>
 

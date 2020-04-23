@@ -87,7 +87,7 @@ public class register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         setupUIViews();
 
-        maill=mail.toString();
+
 
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseStorage= FirebaseStorage.getInstance();
@@ -123,6 +123,7 @@ public class register extends AppCompatActivity {
                                 //sendEmailVerification();
                                 //sendUserData();
                                 uploadFile();
+                                maill=mail.getText().toString();
 
 
 
