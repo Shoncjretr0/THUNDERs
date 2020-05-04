@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -53,6 +54,8 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
     int aa,bb;
     char cc,dd;
     Query query;
+    static int PICK_IMAGE = 123;
+    String lat,lon,piccc,vedio,type;
 
 
     @Override
@@ -189,14 +192,31 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
             chatlayout adapter = new chatlayout(messaging.this, listbuyy);
             listviewbuys.setAdapter( adapter);
 
-            listviewbuys.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            listviewbuys.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i,long l) {
 
 
                     messagepass listbuy = listbuyy.get(i);
 
-                    return false;
+                    lat= listbuy.getLat();
+                    lon= listbuy.getLon();
+                    piccc=listbuy.getPicurl();
+                    vedio=listbuy.getVideourl();
+                    type=listbuy.getType();
+
+                    if(type.equals("location")){
+
+                        String uri=String.format(Locale.ENGLISH,"geo:%s,%s?q=%s,%s",lat,lon,lat,lon);
+                        Intent intent =new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                        startActivity(intent);
+
+                    }
+
+
+
+
                 }
             });
 
@@ -219,13 +239,16 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
         String picurl="unknown";
         String videourl="unknown";
         String docurl="unknown";
+        String lat="unknown";
+        String lon="unknown";
+        String type="message";
 
 
         if(!TextUtils.isEmpty(message)){
 
             String id=databaseuser.push().getKey();
 
-            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier);
+            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier,lat,lon,type);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"message sent",Toast.LENGTH_LONG).show();
 
@@ -244,4 +267,6 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
     public void onButtonClicked(String text) {
 
     }
+
+
 }

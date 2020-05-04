@@ -11,12 +11,15 @@ public class messagepass {
     String videourl;
     String docurl;
     String iddentifier;
+    String lat;
+    String lon;
+    String type;
 
     public messagepass(){
 
     }
 
-    public messagepass(String id,String to, String from, String message, String time, String date, String picurl, String videourl, String docurl,  String iddentifier) {
+    public messagepass(String id,String to, String from, String message, String time, String date, String picurl, String videourl, String docurl,  String iddentifier, String lat, String lon, String type) {
         this.id =id;
         this.to = to;
         this.from = from;
@@ -27,6 +30,21 @@ public class messagepass {
         this.videourl = videourl;
         this.docurl = docurl;
         this.iddentifier= iddentifier;
+        this.lat=lat;
+        this.lon=lon;
+        this.type=type;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getId() {

@@ -46,9 +46,10 @@
     <array name="filters">
         <item>All</item>
         <item>friends</item>
-        <item>#_Hash tag</item>
+        <item>Hashtag</item>
         <item>places</item>
 
 
     </array>
+    <string name="title_activity_test">Map</string>
 </resources>

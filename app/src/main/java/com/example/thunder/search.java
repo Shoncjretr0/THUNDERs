@@ -38,6 +38,7 @@ public class search extends AppCompatActivity {
     ListView listviewbuys;
     DatabaseReference databasesell;
     List<userprofileref> listbuyy;
+    List<post> listbuyyy;
     private FirebaseAuth firebaseAuth;
 
 
@@ -49,6 +50,11 @@ public class search extends AppCompatActivity {
         setSupportActionBar(toolbar);
         searchView = (SearchView) findViewById(R.id.searchView);
         hashtag= findViewById(R.id.filter);
+        databasesell = FirebaseDatabase.getInstance().getReference("userprofile");
+
+        listviewbuys = findViewById(R.id.listviewbuy);
+
+        listbuyy = new ArrayList<>();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -58,9 +64,8 @@ public class search extends AppCompatActivity {
 
                     output=query;
                     hhashtag=hashtag.getSelectedItem().toString();
-                    if(hhashtag=="friends"){
+                    if(hhashtag.equals("friends")){
 
-                        Toast.makeText(search.this, "a",Toast.LENGTH_LONG).show();
 
                         databasesell = FirebaseDatabase.getInstance().getReference("userprofile");
 
@@ -78,8 +83,25 @@ public class search extends AppCompatActivity {
 
 
                     }
+                    else if(hhashtag.equals("Hashtag")){
 
 
+                        databasesell = FirebaseDatabase.getInstance().getReference("userprofile");
+
+                        listviewbuys = findViewById(R.id.listviewbuy);
+
+                        listbuyy = new ArrayList<>();
+
+
+                        Query querry1 = FirebaseDatabase.getInstance().getReference("post")
+                                .orderByChild("tags")
+                                .equalTo(output);
+
+                        querry1.addListenerForSingleValueEvent(valueEventListener1);
+
+
+
+                    }
 
 
                 }else{
@@ -137,6 +159,11 @@ public class search extends AppCompatActivity {
                 return false;
             }
         });
+
+        Query querry = FirebaseDatabase.getInstance().getReference("userprofile");
+
+        querry.addListenerForSingleValueEvent(valueEventListener);
+
     }
     // Get the intent, verify the action and get the query
 
@@ -174,6 +201,40 @@ public class search extends AppCompatActivity {
              }
 
          };
+
+    final ValueEventListener valueEventListener1 = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+            listbuyyy.clear();
+            for (DataSnapshot databasellsn : dataSnapshot.getChildren()) {
+                post sellagria = databasellsn.getValue(post.class);
+
+                listbuyyy.add(sellagria);
+            }
+            searchhashtag adapter = new searchhashtag(search.this, listbuyyy);
+            listviewbuys.setAdapter( adapter);
+
+            listviewbuys.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                    post listbuy = listbuyyy.get(i);
+
+                    return false;
+                }
+            });
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+        }
+
+    };
 
 
 
