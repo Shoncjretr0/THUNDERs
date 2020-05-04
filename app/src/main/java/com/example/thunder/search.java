@@ -39,7 +39,7 @@ public class search extends AppCompatActivity {
     DatabaseReference databasesell;
     List<userprofileref> listbuyy;
     List<post> listbuyyy;
-    private FirebaseAuth firebaseAuth;
+    public FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -248,12 +248,33 @@ public class search extends AppCompatActivity {
     public boolean onOptionsItemSelected( MenuItem item) {
         switch (item.getItemId()){
             case R.id.item1:
+                Intent myIntent=new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody="https://shoncj.wordpress.com/2020/03/25/thunder-app/ try this app";
+                String shareSub="hope you download it";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                startActivity(Intent.createChooser(myIntent,"Share Using"));
+                return true;
+            case R.id.item2:
+                return true;
+            case R.id.item3:
+                startActivity(new Intent(search.this, chatmenu.class));
+                return true;
+            case R.id.item5:
+                Logout();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
     }
+    private void Logout() {
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(search.this, login.class));
+    }
+
 }
 
 

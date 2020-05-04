@@ -2,10 +2,12 @@ package com.example.thunder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,12 +31,15 @@ public class videos extends AppCompatActivity {
     ListView listviewbuys;
     DatabaseReference databasesell;
     List<post> listbuyy;
+    public FirebaseAuth firebaseAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos);
+        Toolbar toolbar = findViewById(R.id.topBr);
+        setSupportActionBar(toolbar);
 
         databasesell = FirebaseDatabase.getInstance().getReference("post_video");
 
@@ -123,6 +129,44 @@ public class videos extends AppCompatActivity {
         }
 
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater= getMenuInflater();
+        inflater.inflate(R.menu.example_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item1:
+                Intent myIntent=new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody="https://shoncj.wordpress.com/2020/03/25/thunder-app/ try this app";
+                String shareSub="hope you download it";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                startActivity(Intent.createChooser(myIntent,"Share Using"));
+                return true;
+            case R.id.item2:
+                return true;
+            case R.id.item3:
+                startActivity(new Intent(videos.this, chatmenu.class));
+                return true;
+            case R.id.item5:
+                Logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+    private void Logout() {
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(videos.this, login.class));
+    }
 
 
 }

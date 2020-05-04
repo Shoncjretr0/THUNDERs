@@ -32,7 +32,7 @@ public class photos extends AppCompatActivity  {
     ListView listviewbuys;
     DatabaseReference databasesell;
     List<post> listbuyy;
-    private FirebaseAuth firebaseAuth;
+    public FirebaseAuth firebaseAuth;
 
 
     @Override
