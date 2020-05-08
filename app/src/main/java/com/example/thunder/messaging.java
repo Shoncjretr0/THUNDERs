@@ -1,6 +1,7 @@
 package com.example.thunder;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,6 +58,7 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
     Query query;
     static int PICK_IMAGE = 123;
     static String lat,lon,piccc,vedio,type,mess,doc;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +102,7 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
 
         databaseuser= FirebaseDatabase.getInstance().getReference("message");
 
-        databaseuser2= FirebaseDatabase.getInstance().getReference("message");
+
 
         databasesell = FirebaseDatabase.getInstance().getReference("message");
 
@@ -174,10 +177,43 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
             }
         });
 
+        databaseuser2= FirebaseDatabase.getInstance().getReference("message");
+        databaseuser2.addChildEventListener(new ChildEventListener() {
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousKey) {
 
+                query.addListenerForSingleValueEvent(valueEventListener);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                query.addListenerForSingleValueEvent(valueEventListener);
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
+
+
+
+
     final ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

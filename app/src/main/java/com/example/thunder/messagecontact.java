@@ -54,8 +54,8 @@ public class messagecontact extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(intent, PICK_CONTACT);
 
-        namee.setText(name);
-        contacts.setText(cNumber);
+
+
         aa=from.length();
         bb=to.length();
 
@@ -122,8 +122,10 @@ public class messagecontact extends AppCompatActivity {
                                     null, null);
                             phones.moveToFirst();
                             cNumber = phones.getString(phones.getColumnIndex("data1"));
+                            contacts.setText(cNumber);
                         }
                         name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                        namee.setText(name);
 
 
                     }

@@ -24,7 +24,6 @@
         android:layout_height="69dp"
         android:layout_marginStart="296dp"
         android:layout_marginTop="4dp"
-        android:text="picc"
         android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +34,6 @@
         android:layout_height="69dp"
         android:layout_marginStart="168dp"
         android:layout_marginTop="104dp"
-        android:text="loc"
         android:textColor="#03A9F4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +44,6 @@
         android:layout_height="69dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="104dp"
-        android:text="aud"
         android:textColor="#03A9F4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +54,6 @@
         android:layout_height="69dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
-        android:text="doc"
         android:textColor="#00BCD4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -68,7 +64,6 @@
         android:layout_height="69dp"
         android:layout_marginStart="296dp"
         android:layout_marginTop="104dp"
-        android:text="con"
         android:textColor="#FA0357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +74,6 @@
         android:layout_height="69dp"
         android:layout_marginStart="168dp"
         android:layout_marginTop="4dp"
-        android:text="camera"
         android:textColor="#FA0357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

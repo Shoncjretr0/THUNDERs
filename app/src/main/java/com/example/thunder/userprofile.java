@@ -61,7 +61,7 @@ public class userprofile extends AppCompatActivity {
         String email=register.maill;
         String profilepicurl= register.picurll;
         String description=des.getText().toString().trim();
-        String status="online";
+        String status="Online";
 
 
         if(!TextUtils.isEmpty(name)){

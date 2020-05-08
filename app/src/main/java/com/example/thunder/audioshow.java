@@ -96,6 +96,13 @@ public class audioshow extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+        }
+        finish();
+    }
 
 }
 

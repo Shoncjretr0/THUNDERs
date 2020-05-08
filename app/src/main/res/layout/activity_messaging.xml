@@ -41,7 +41,7 @@
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
                         android:textColor="#000000"
-                        android:textSize="20dp"
+                        android:textSize="14dp"
                         android:layout_marginTop="15dp"
                         android:layout_marginLeft="22dp"
                         android:textStyle="bold"/>

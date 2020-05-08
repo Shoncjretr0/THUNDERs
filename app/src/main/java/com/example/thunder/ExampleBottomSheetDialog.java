@@ -98,6 +98,18 @@ public class ExampleBottomSheetDialog extends BottomSheetDialogFragment {
             }
 
         });
+        con.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+
+            public void onClick(View view) {
+
+                startActivity(new Intent (getContext(),messagecontact.class));
+
+
+            }
+
+        });
 
 
 

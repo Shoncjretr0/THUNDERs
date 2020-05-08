@@ -292,10 +292,17 @@ public class messageaudio extends AppCompatActivity {
     }
     public void pause(){
 
-        if(mediaPlayer.isPlaying())
+        if(mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
+        }
 
 
+    }
+    public void onBackPressed() {
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+        }
+        finish();
     }
 
 }
