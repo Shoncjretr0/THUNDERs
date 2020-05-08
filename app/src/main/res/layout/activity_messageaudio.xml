@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.thunder.photos">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/topBar">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/a">
+
+
+
+
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <ImageView
+                android:id="@+id/imagepic"
+                android:layout_width="match_parent"
+                android:layout_height="321dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/music" />
+
+
+
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/bottomBar"
+                android:layout_alignParentBottom="true"
+                android:background="#FFFFFF">
+
+
+                <EditText
+                    android:id="@+id/textmessage"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="48dp"
+                    android:textColor="#070707"
+                    android:textColorHint="#050505"
+                    android:hint="enter message" />
+
+                <ImageView
+                    android:id="@+id/send"
+                    android:layout_width="47dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="4dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/send" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_below="@+id/imagepic"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp" />
+
+            <ImageView
+                android:id="@+id/play"
+                android:layout_width="105dp"
+                android:layout_height="105dp"
+                android:layout_below="@+id/textView6"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="143dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="163dp"
+                android:src="@drawable/play" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/bottomBar"
+                android:layout_below="@+id/play"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="98dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

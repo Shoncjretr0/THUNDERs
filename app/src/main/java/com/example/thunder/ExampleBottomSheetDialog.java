@@ -36,7 +36,7 @@ import static com.example.thunder.messaging.PICK_IMAGE;
 
 public class ExampleBottomSheetDialog extends BottomSheetDialogFragment {
     private BottomSheetListener mListener;
-    public TextView fg,vg;
+    public TextView fg,vg,cam,aud,con,doc;
 
 
     @Nullable
@@ -45,6 +45,10 @@ public class ExampleBottomSheetDialog extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.bottom_sheet_layout, container, false);
         fg=v.findViewById(R.id.pic);
         vg=v.findViewById(R.id.loc);
+        cam=v.findViewById(R.id.camera);
+        aud=v.findViewById(R.id.audio);
+        con=v.findViewById(R.id.contact);
+        doc=v.findViewById(R.id.doc);
         fg.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,6 +73,32 @@ public class ExampleBottomSheetDialog extends BottomSheetDialogFragment {
             }
 
         });
+        aud.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+
+            public void onClick(View view) {
+
+                startActivity(new Intent (getContext(),messageaudio.class));
+
+
+            }
+
+        });
+
+        doc.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+
+            public void onClick(View view) {
+
+                startActivity(new Intent (getContext(),messagedocument.class));
+
+
+            }
+
+        });
+
 
 
         return v;

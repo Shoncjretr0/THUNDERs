@@ -55,8 +55,7 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
     char cc,dd;
     Query query;
     static int PICK_IMAGE = 123;
-    String lat,lon,piccc,vedio,type;
-
+    static String lat,lon,piccc,vedio,type,mess,doc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,7 +203,10 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
                     lon= listbuy.getLon();
                     piccc=listbuy.getPicurl();
                     vedio=listbuy.getVideourl();
+                    doc=listbuy.getDocurl();
                     type=listbuy.getType();
+                    mess=listbuy.getMessage();
+
 
                     if(type.equals("location")){
 
@@ -212,6 +214,45 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
                         Intent intent =new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                         startActivity(intent);
 
+                    }
+                    else if(type.equals("audio")){
+
+
+                        startActivity(new Intent(messaging.this, audioshow.class));
+
+
+                    }
+                    else if(type.equals("pdf")){
+
+
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(doc));
+                        startActivity(browserIntent);
+
+
+                    }
+
+                    else if(type.equals("contact")){
+
+                        Uri u = Uri.parse("tel:" + mess);
+                        Intent v = new Intent(Intent.ACTION_DIAL, u);
+
+                        try
+                        {
+                            startActivity(v);
+                        }
+                        catch (SecurityException s)
+                        {
+                            Toast.makeText(messaging.this, "error", Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                        }
+
+
+                    else{
+
+                        Toast.makeText(messaging.this, "message", Toast.LENGTH_SHORT).show();
                     }
 
 

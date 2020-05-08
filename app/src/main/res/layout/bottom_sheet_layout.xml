@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="#08528D"
+    android:background="#FDFDFD"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="350dp"
+        android:layout_width="340dp"
         android:layout_height="180dp"
         android:background="@drawable/attachmment"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,23 +20,67 @@
 
     <TextView
         android:id="@+id/pic"
-        android:layout_width="73dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="276dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="78dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="4dp"
         android:text="picc"
-        android:textColor="#FFFFFF"
+        android:textColor="#2196F3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/loc"
-        android:layout_width="73dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="92dp"
+        android:layout_width="78dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="104dp"
         android:text="loc"
-        android:textColor="#FFFFFF"
+        android:textColor="#03A9F4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/audio"
+        android:layout_width="78dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="104dp"
+        android:text="aud"
+        android:textColor="#03A9F4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/doc"
+        android:layout_width="78dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        android:text="doc"
+        android:textColor="#00BCD4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="78dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="104dp"
+        android:text="con"
+        android:textColor="#FA0357"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/camera"
+        android:layout_width="78dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="4dp"
+        android:text="camera"
+        android:textColor="#FA0357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

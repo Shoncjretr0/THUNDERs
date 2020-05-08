@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,11 @@
         android:roundIcon="@mipmap/cloud"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".searchhashtag"></activity>
+        <activity android:name=".messagecontact"></activity>
+        <activity android:name=".messagedocument" />
+        <activity android:name=".audioshow" />
+        <activity android:name=".messageaudio" />
+        <activity android:name=".searchhashtag" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
