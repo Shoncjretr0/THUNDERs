@@ -35,7 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAayOYThdSfk8bttzgcS1lPVm0DPlJLgaM" />
+            android:value="enter the gmap key" />
 
         <activity
             android:name=".test"
