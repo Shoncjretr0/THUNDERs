@@ -1,6 +1,7 @@
 package com.example.thunder;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -17,6 +18,7 @@ import android.widget.SearchView;
 import android.widget.Spinner;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +40,8 @@ public class chatmenu extends AppCompatActivity {
     List<userprofileref> listbuyy;
     private FirebaseAuth firebaseAuth;
     public static String namee,picurl,usernamme;
+    Query querry;
+    DatabaseReference databaseuser,databaseuser2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +58,43 @@ public class chatmenu extends AppCompatActivity {
         listbuyy = new ArrayList<>();
 
 
-        Query querry = FirebaseDatabase.getInstance().getReference("userprofile");
+        querry = FirebaseDatabase.getInstance().getReference("userprofile");
 
         querry.addListenerForSingleValueEvent(valueEventListener);
+
+        databaseuser2= FirebaseDatabase.getInstance().getReference("userprofile");
+        databaseuser2.addChildEventListener(new ChildEventListener() {
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousKey) {
+
+                querry.addListenerForSingleValueEvent(valueEventListener);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                querry.addListenerForSingleValueEvent(valueEventListener);
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
 
     }

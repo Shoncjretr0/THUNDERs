@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class chatlayout extends ArrayAdapter<messagepass> {
     public DatabaseReference mReference;
     public DatabaseReference childReference;
     String profilepiccc;
+    String nameee=login.name;
 
     public chatlayout(Activity context, List<messagepass> buylistadapters) {
         super(context, R.layout.activity_chatlayout, buylistadapters);
@@ -89,6 +91,11 @@ public class chatlayout extends ArrayAdapter<messagepass> {
                 .into(messagepic);
 
 
+        if(b.equals(nameee)){
+
+            user.setTextColor(Color.parseColor("#FF4081"));
+
+        }
 
 
         return listViewItem;

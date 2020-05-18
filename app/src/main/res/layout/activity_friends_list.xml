@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/seenimg"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
@@ -37,12 +37,12 @@
 
     <TextView
         android:id="@+id/seennumber"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="27dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="44dp"
         android:textColor="#FFFFFF"
         android:textSize="14dp" />
 

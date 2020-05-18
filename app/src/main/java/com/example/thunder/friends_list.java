@@ -4,6 +4,7 @@ package com.example.thunder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.DataSetObserver;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,8 +42,16 @@ public class friends_list extends ArrayAdapter<userprofileref> {
     public DatabaseReference mReference;
     long count;
     public DatabaseReference childReference;
-    ImageView seenimg;
-    TextView seennum;
+    ImageView seenimg,onlinesymbol;
+    TextView seennum,onlinestate;
+    String savedd;
+    String state;
+    int aa,bb;
+    char cc,dd;
+    String iddentifier,to,from;
+    String saved;
+    long messagecount;
+    int countt=0;
 
 
     public friends_list(Activity context, List<userprofileref> buylistadapters) {
@@ -62,6 +71,8 @@ public class friends_list extends ArrayAdapter<userprofileref> {
         ImageView profilepic = listViewItem.findViewById(R.id.imageView);
         seenimg= listViewItem.findViewById(R.id.seenimg);
         seennum=listViewItem.findViewById(R.id.seennumber);
+        onlinesymbol=listViewItem.findViewById(R.id.imageView8);
+        onlinestate=listViewItem.findViewById(R.id.textView7);
 
 
 
@@ -73,12 +84,19 @@ public class friends_list extends ArrayAdapter<userprofileref> {
 
         username.setText("Username:   " + sellG.getUsrproname());
         b=sellG.getUsrpicurl();
+        state=sellG.getStatus();
+        if(state.equals("Onlinee")){
 
+            onlinesymbol.setImageResource(R.drawable.ic_brightness_1_black_24dp);
+            onlinestate.setText("online");
+
+
+        }
 
         Picasso.get().load(b).transform(new CropCircleTransformation()).into(profilepic);
 
-        String saved=login.name;
-        String savedd=sellG.usrproemail;
+        saved=login.name;
+        savedd=sellG.usrproemail;
 
         if(saved.equals(savedd)){
 
@@ -113,6 +131,80 @@ public class friends_list extends ArrayAdapter<userprofileref> {
       //      seenimg.setImageResource(R.drawable.round);
       //      seennum.setText((int) count);
    //      }
+
+        to=saved;
+        from=savedd;
+
+        aa=from.length();
+        bb=to.length();
+
+
+        if(to.equals(from)) {
+
+            iddentifier=to;
+        }
+        else if(aa > bb) {
+
+            iddentifier = from+to;
+        }
+        else if(bb > aa){
+
+            iddentifier= to+from;
+        }
+        else if(aa==bb){
+
+            cc=from.charAt(3);
+            dd=to.charAt(3);
+            if(cc>dd){
+                iddentifier=from+to;
+
+            }
+            else{
+                iddentifier=to+from;
+            }
+
+        }
+
+        else{
+            iddentifier="omb";
+        }
+
+        final DatabaseReference collection = FirebaseDatabase.getInstance().getReference("message");
+        Query query = collection.orderByChild("iddentifier").equalTo(iddentifier);
+        query.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                     messagecount = (long)child.child("seen").getValue();
+
+                     if(messagecount==0){
+
+                         countt=countt+1;
+
+                     }
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
+
+        if(countt>0) {
+
+            seenimg.setImageResource(R.drawable.round);
+            seennum.setText(Integer.toString(countt));
+
+        }
 
 
         return listViewItem;

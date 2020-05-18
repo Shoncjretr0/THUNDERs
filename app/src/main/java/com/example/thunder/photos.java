@@ -23,9 +23,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class photos extends AppCompatActivity  {
 
@@ -33,6 +36,8 @@ public class photos extends AppCompatActivity  {
     DatabaseReference databasesell;
     List<post> listbuyy;
     public FirebaseAuth firebaseAuth;
+    String nameee=login.name;
+    String idd;
 
 
     @Override
@@ -168,6 +173,67 @@ public class photos extends AppCompatActivity  {
         firebaseAuth.signOut();
         finish();
         startActivity(new Intent(photos.this, login.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        final DatabaseReference collection = FirebaseDatabase.getInstance().getReference("userprofile");
+        Query query = collection.orderByChild("usrproemail").equalTo(nameee);
+        query.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                    final DatabaseReference usrproid = child.child("status").getRef();
+
+                          usrproid.setValue("Onlinee");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
+
+
+    }
+
+    @Override
+    public void onBackPressed()  {
+        super.onPause();
+        final DatabaseReference collection = FirebaseDatabase.getInstance().getReference("userprofile");
+        Query query = collection.orderByChild("usrproemail").equalTo(nameee);
+        query.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+
+                    final DatabaseReference usrproid = child.child("status").getRef();
+
+                    usrproid.setValue("Offline");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
+
+        finish();
+
     }
 
 }
