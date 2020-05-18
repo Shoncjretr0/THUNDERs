@@ -46,6 +46,7 @@ public class register extends AppCompatActivity {
     private ImageView userprofilepic;
     private FirebaseAuth firebaseAuth;
     private FirebaseStorage firebaseStorage;
+    String urll="";
     int uploads=0;
     private static int PICK_IMAGE = 123;
     public ArrayList<Uri> ImageList = new ArrayList<Uri>();
@@ -66,6 +67,7 @@ public class register extends AppCompatActivity {
 
                 imageuri = data.getData();
                 ImageList.add(imageuri);
+                urll="set";
 
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageuri);
@@ -163,11 +165,18 @@ public class register extends AppCompatActivity {
         name=mail.getText().toString();
         upassword =password.getText().toString();
 
+
+
+
         if(name.isEmpty() || upassword.isEmpty() ) {
             Toast.makeText(register.this, "please enter all the details", Toast.LENGTH_SHORT).show();
         }
         else if(upassword.length()<6){
             Toast.makeText(register.this, "password length should be greater than 6  ", Toast.LENGTH_SHORT).show();
+
+        }
+        else if(urll.isEmpty()){
+            Toast.makeText(register.this, "select a profile picture ", Toast.LENGTH_SHORT).show();
 
         }
         else {

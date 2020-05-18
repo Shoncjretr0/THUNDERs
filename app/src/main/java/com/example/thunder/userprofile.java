@@ -25,6 +25,7 @@ public class userprofile extends AppCompatActivity {
     Button submitt;
     Spinner usertyp;
     DatabaseReference databaseuser;
+    int value=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,9 @@ public class userprofile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 adduser();
-                startActivity(new Intent(userprofile.this , login.class));
+                if(value==1) {
+                    startActivity(new Intent(userprofile.this, login.class));
+                }
 
             }
         });
@@ -64,19 +67,19 @@ public class userprofile extends AppCompatActivity {
         String status="Online";
 
 
-        if(!TextUtils.isEmpty(name)){
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phno) && !TextUtils.isEmpty(addr) && !TextUtils.isEmpty(city) && !TextUtils.isEmpty(description)){
 
             String id=databaseuser.push().getKey();
 
             userprofileref usrprofre =new userprofileref(id, name, addr, email, city ,phno,profilepicurl,description,status);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"details collected sucessfully",Toast.LENGTH_LONG).show();
-
-
+             value=1;
 
 
         }else{
-            Toast.makeText(this,"you should enter name",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"you should enter all details",Toast.LENGTH_LONG).show();
+            value=0;
         }
     }
 }

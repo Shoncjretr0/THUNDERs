@@ -208,7 +208,6 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
             }
         });
 
-
     }
 
 
@@ -319,13 +318,14 @@ public class messaging extends AppCompatActivity implements ExampleBottomSheetDi
         String lat="unknown";
         String lon="unknown";
         String type="message";
+        int seen=0;
 
 
         if(!TextUtils.isEmpty(message)){
 
             String id=databaseuser.push().getKey();
 
-            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier,lat,lon,type);
+            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier,lat,lon,type,seen);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"message sent",Toast.LENGTH_LONG).show();
 

@@ -285,13 +285,14 @@ public class messagelocation extends FragmentActivity implements
         String lat=latit;
         String lon=longi;
         String type="location";
+        int seen=0;
 
 
         if(!TextUtils.isEmpty(lat)){
 
             String id=databaseuser.push().getKey();
 
-            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier,lat,lon,type);
+            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier,lat,lon,type,seen);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"message sent",Toast.LENGTH_LONG).show();
             startActivity(new Intent(messagelocation.this, messaging.class));

@@ -213,13 +213,14 @@ public class messagephotopass extends AppCompatActivity {
         String lat="unknown";
         String lon="unknown";
         String type="pic";
+        int seen=0;
 
 
         if(!TextUtils.isEmpty(picurl)){
 
             String id=databaseuser.push().getKey();
 
-            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier,lat,lon,type);
+            messagepass usrprofre =new messagepass(id, to, from, message, time , date, picurl, videourl, docurl,iddentifier,lat,lon,type,seen);
             databaseuser.child(id).setValue(usrprofre);
             Toast.makeText(this,"message sent",Toast.LENGTH_LONG).show();
             startActivity(new Intent(messagephotopass.this, messaging.class));

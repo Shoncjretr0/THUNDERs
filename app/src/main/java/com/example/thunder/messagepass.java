@@ -14,12 +14,13 @@ public class messagepass {
     String lat;
     String lon;
     String type;
+    int seen;
 
     public messagepass(){
 
     }
 
-    public messagepass(String id,String to, String from, String message, String time, String date, String picurl, String videourl, String docurl,  String iddentifier, String lat, String lon, String type) {
+    public messagepass(String id,String to, String from, String message, String time, String date, String picurl, String videourl, String docurl,  String iddentifier, String lat, String lon, String type,int seen) {
         this.id =id;
         this.to = to;
         this.from = from;
@@ -33,6 +34,11 @@ public class messagepass {
         this.lat=lat;
         this.lon=lon;
         this.type=type;
+        this.seen=seen;
+    }
+
+    public int getSeen() {
+        return seen;
     }
 
     public String getLat() {
