@@ -11,7 +11,9 @@ Online social media platform to share our image and video with other friends,thi
 ![Screenshot_2020-07-15-17-18-36-039](https://user-images.githubusercontent.com/56879646/107123088-9ef89480-68c1-11eb-90f5-c38507acb9a7.jpeg)
 
 4.bot chat
-![Screenshot_2020-07-15-17-19-00-345](https://user-images.githubusercontent.com/56879646/107123097-a61fa280-68c1-11eb-9fbf-eee79a5a9394.jpeg)
+
+
+
 
 5.user chat
 ![Screenshot_2020-07-15-17-42-20-444](https://user-images.githubusercontent.com/56879646/107123101-ab7ced00-68c1-11eb-8f1f-740bad77d8f0.jpeg)
